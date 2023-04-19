@@ -1,0 +1,27 @@
+<div class="mg-container">
+  <h1 class="h1-title">Take your product</h1>
+  <p class="p-title">All products available now</p>
+  <!-- all cards -->
+    <div class="cards">
+      <!-- card -->
+
+      <% for(let i = 0; i < products.length; i++) { %>
+      <div class="card">
+        <img class="img-card" src=<%=  products[i].thumbnail %> alt="img" />
+              <div class="product-content">
+                <h1 class="h1-card"><%= products[i].product %></h1>
+                <p class="p-card"><%= products[i].description %></p>
+                <div class="rating">
+                  <p class="p-rating"><%= products[i].rating %></p>
+                  <i class="lni lni-star-fill"></i>
+                </div>
+                <h3 class="h3-price"><%= products[i].price %>$</h3>
+              </div>
+              <form action="/" method="post">
+                <button class="sub-btn" type="submit" name="button">View more</button>
+              </form>
+        </div>
+      <% } %>
+    </div>
+</div>
+
