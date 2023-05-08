@@ -21,8 +21,13 @@ body::-webkit-scrollbar-thumb {
     background-color: grey;
     border: 1.5px solid #fff;
 }
+
+/* hidden class */
+.hidden{
+    display: none;
+}
 .mg-container{
-    margin: 50px 10% 0;
+    margin: 0 10% 50px;
 }
 /* the navbar section */
 .navbar {
@@ -31,6 +36,9 @@ body::-webkit-scrollbar-thumb {
     padding: 1rem 9.5%;
     border-bottom: 1px solid #ccc;
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: -webkit-fill-available;
+    background-color: #f5f5f5;
   }
 
 .navbar-brand {
@@ -77,41 +85,144 @@ body::-webkit-scrollbar-thumb {
   font-size: 35px;
   color: #0081C9
 }
-.nav-btn{
-  /* margin: 0 30px; */
+.search-inp{
+    padding: 10px;
+    border: 0.5px solid #ccc;
+    border-radius: 5px;
+}
+.nav-btn-singup{
+    padding: 10px 10px;
+    color: #fff;
+    background-color: #0081C9;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+.nav-btn-login{
+    margin-right: 20px;
   padding: 10px 10px;
-  color: #fff;
-  background-color: #0081C9;
-  border: 0;
+  background-color: inherit;
+  border: 1px solid #000;
   border-radius: 5px;
+  transition: 0.3s;
   cursor: pointer;
+}
+.nav-btn-login:hover{
+    transition: 0.3s;
+    background-color: #0081C9;
+    color: #fff;
+    border: 0.5px solid #ccc;
 }
 #navbar-toggle{
   display:none
 }
 /* body section */
+.title-heading{
+    display:inline-grid;
+    padding-top: 75px;
+}
 .h1-title{
     font-size: 40px;
     padding: 20px 0;
+    margin: 0;
 }
 .p-title{
-    margin-bottom: 0;
+    margin: 0;
     color: grey;
 }
 
-/* card style */
-.cards{
-    display: inline-grid;
-    grid-template-columns: auto auto auto;
+/* model style */
+.btn{
+    display: flex;
+    justify-content: end;
 }
+.btn-model{
+    display: flex;
+    border: 0.5px solid #ccc;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 19px;
+    cursor: pointer;
+}
+.create-model{
+    border: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem 3rem;
+    box-shadow: 0 4rem 6rem rgb(0 0 0 / 30%);
+    z-index: 1000;
+    transition: all 0.5s;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  .overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    transition: all 0.5s;
+  }
+  .closeModalBtn{
+    display: inline-block;
+    border: 0;
+    font-size: 3rem;
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    cursor: pointer;
+    background: none;
+  }
+  .card-create{
+    display: flex;
+    flex-direction: column;
+  }
+  .card-create input{
+    padding: 10px;
+    margin: 7px 0px;
+    border: 0.5px solid #ccc;
+    border-radius: 5px;
+  }
+  .card-create button{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 0 0;
+    border-radius: 5px;
+    border: 1.5px solid #000;
+    font-size: 20px;
+    background-color: inherit;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.card-create button:hover{
+    background-color: #0081C9;
+    color: #fff;
+    transition: 0.3s;
+}
+/* card style */
 .card{
     background-color: #fff;
     padding: 15px;
-    margin: 10px 30px 10px 0;
+    margin: 10px 0 10px 0;
     border: 1px solid #ccc;
     border-radius: 15px;
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
-    height: fit-content;
+    display: flex;
+}
+.product-content{
+    padding: 0 0 0 20px;
+    width: 50%;
+}
+.form-view{
+    display: flex;
+    align-items: flex-end;
+    width: 18%;
 }
 .h1-card{
     margin-bottom: 0;
@@ -119,12 +230,13 @@ body::-webkit-scrollbar-thumb {
 .p-card{
     margin-top: 10px;
     color: grey;
+    padding-right: 25%;
 }
 .img-card{
     width: 23rem;
     height: 250px;
     border-radius: 15px;
-    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
+    object-fit: contain;
 }
 .rating{
     display: inline-flex;
@@ -141,7 +253,8 @@ body::-webkit-scrollbar-thumb {
     margin: 0 0 0 5px;
 }
 .h3-price{
-    margin-bottom: 5px;
+    margin: 0;
+    padding: 0 10px 0 0;
     font-size: 25px;
     display: inline-block;
 }
@@ -159,6 +272,17 @@ body::-webkit-scrollbar-thumb {
     background-color: #0081C9;
     color: #fff;
     transition: 0.3s;
+}
+
+/* shoping page style */
+.cardId{
+    padding-top: 100px;
+}
+.cardId-img{
+    float: left;
+}
+.cardId-content{
+    float: right;
 }
 /* resposive desing */
 @media (max-width:1000px) {
@@ -182,7 +306,10 @@ body::-webkit-scrollbar-thumb {
       display: block;
       font-size: 30px
     }
-    .nav-btn{
+    .search-inp{
+        margin: 10px 0;
+    }
+    .nav-btn-singup, .nav-btn-login{
       margin: 0 0 25px
     }
     #navbar-toggle:checked ~ .navbar-menu {

@@ -1,6 +1,41 @@
 <div class="mg-container">
-  <h1 class="h1-title">Take your product</h1>
-  <p class="p-title">All products available now</p>
+  <div class="title-heading">
+    <h1 class="h1-title">Take your product</h1>
+    <p class="p-title">All products available now</p>
+  </div>
+  <!-- open model btn -->
+  <div class="btn">
+    <button class="btn-model"><i class="lni lni-plus"></i></button>
+  </div>
+  <!-- open and close model -->
+    <div class="create-model hidden">
+      <form method="post">
+        <button class="closeModalBtn" type="submit" name="button">&times;</button>
+        <div class="card-create">
+          <form action="/" method="post">
+              <label>title</label>
+              <input type="text" name="title" placeholder="title" required>
+              <label>description</label>
+              <input type="text" name="description" placeholder="description" required>
+              <label>price</label>
+              <input type="text" name="price" placeholder="price">
+              <label>discountPercentage</label>
+              <input type="text" name="discountPercentage" placeholder="discountPercentage" required>
+              <label>rating</label>
+              <input type="text" name="rating" placeholder="rating" required>
+              <label>stock</label>
+              <input type="text" name="stock" placeholder="stock" required>
+              <label>brand</label>
+              <input type="text" name="brand" placeholder="brand" required>
+              <label>category</label>
+              <input type="text" name="category" placeholder="category" required>
+              <label>thumbnail</label>
+              <input type="text" name="thumbnail" placeholder="thumbnail" required>
+              <button type="submit">Crate Product</button>
+          </form>
+      </div>
+    </div>
+    <div class="overlay hidden"></div>
   <!-- all cards -->
     <div class="cards">
       <!-- card -->
@@ -11,14 +46,15 @@
               <div class="product-content">
                 <h1 class="h1-card"><%= products[i].title %></h1>
                 <p class="p-card"><%= products[i].description %></p>
-                <h3 class="h3-price"><%= products[i].price %>$</h3>
+                <h3>discount percentage: <span>-<%= products[i].discountPercentage %>%</span></h3>
                 <div class="rating">
                   <p class="p-rating"><%= products[i].rating %></p>
                   <i class="lni lni-star-fill"></i>
                 </div>
               </div>
-              <form action="/" method="post">
-                <button class="sub-btn" type="submit" name="button">View more</button>
+              <form class="form-view" action=<%= products[i]._id %> method="get">
+                <h3 class="h3-price"><%= products[i].price %>$</h3>
+                <button class="sub-btn" type="submit">View more</button>
               </form>
         </div>
       <% } %>
