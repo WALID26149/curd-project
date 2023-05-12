@@ -48,7 +48,6 @@ exports.getProduct = async(req, res) => {
   }
 };
 
-
 // post product
 exports.postProduct = async(req, res) => {
   try {
@@ -71,14 +70,21 @@ exports.postProduct = async(req, res) => {
       console.error(`Error saving user: ${error}`);
       res.redirect('/');
     });
-    
-    // search input
-    let payload = req.body.payload.trim();
-    let search = await Product.find({title: { $regex: new RegExp('^'+payload+'.*','i')}}).exec();
-    // limit search resulte to 10
-    search = search.slice(0, 10);
-    res.end({payload: search});
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err
+    });
+  }
+};
 
+exports.postSearch = async(req, res) => {
+  try {
+    let payload = req.body.payload.trim();
+    let search = await Product.find({title: {$regex: new RegExp('^'+payload+'.*', 'i')}}).exec();
+    //Limit Search Results to 10
+    search = search.slice (0, 10);
+    res.send({payload: search});
   } catch (err) {
     res.status(400).json({
       status: 'fail',

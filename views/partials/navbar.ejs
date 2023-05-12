@@ -8,12 +8,11 @@
       <input type="checkbox" id="navbar-toggle">
       <label for="navbar-toggle" class="navbar-toggle-label"><i class="lni lni-menu"></i></label>
       <ul class="navbar-menu">
-        <!-- <form action="/" method="post"> -->
-          <input class="search-inp" type="search" value="" placeholder="search" onkeyup="sendData(this)">
-        <!-- </form> -->
+        <input type="text" id="search-box" placeholder="search" onkeyup="sendData(this)">
+        <section class="hidden" id="searchResults"></section>
         <li><a class="a-link" href="/">Home</a></li>
-        <li><a class="a-link" href="/create">Create</a></li>
-        <li><a class="a-link" href="/update">Cart</a></li>
+        <li><a class="a-link" href="/">Create</a></li>
+        <li><a class="a-link" href="/">Cart</a></li>
         <form action="/">
           <button class="nav-btn-login" type="button" name="button">LOGIN</button>
         </form>

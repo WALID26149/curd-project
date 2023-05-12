@@ -10,6 +10,11 @@ router
    .get(getProductData.getAllProducts)
    .post(getProductData.postProduct)
 
+
+router
+  .route('/search')
+   .post(getProductData.postSearch)
+
 router
   .route('/:id')
    .get(getProductData.getProduct)
@@ -17,5 +22,3 @@ router
    .delete(getProductData.deleteProduct)
 
 module.exports = router;
-
-

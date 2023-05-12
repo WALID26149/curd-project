@@ -85,10 +85,24 @@ body::-webkit-scrollbar-thumb {
   font-size: 35px;
   color: #0081C9
 }
-.search-inp{
+#search-box{
     padding: 10px;
     border: 0.5px solid #ccc;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
+}
+#searchResults{
+    max-width: 600px;
+    width: 25%;
+    position: absolute;
+    left: 772px;
+    top: 53px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+}
+#searchResults p{
+    cursor: pointer;
 }
 .nav-btn-singup{
     padding: 10px 10px;
@@ -116,7 +130,9 @@ body::-webkit-scrollbar-thumb {
 #navbar-toggle{
   display:none
 }
-/* body section */
+/* end */
+
+/* heading section */
 .title-heading{
     display:inline-grid;
     padding-top: 75px;
@@ -130,6 +146,7 @@ body::-webkit-scrollbar-thumb {
     margin: 0;
     color: grey;
 }
+/* end */
 
 /* model style */
 .btn{
@@ -183,11 +200,14 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     flex-direction: column;
   }
-  .card-create input{
+  .card-create input, textarea{
     padding: 10px;
     margin: 7px 0px;
     border: 0.5px solid #ccc;
     border-radius: 5px;
+  }
+  textarea{
+    resize: none;
   }
   .card-create button{
     width: 100%;
@@ -205,6 +225,8 @@ body::-webkit-scrollbar-thumb {
     color: #fff;
     transition: 0.3s;
 }
+/* end */
+
 /* card style */
 .card{
     background-color: #fff;
@@ -273,6 +295,7 @@ body::-webkit-scrollbar-thumb {
     color: #fff;
     transition: 0.3s;
 }
+/* end */
 
 /* shoping page style */
 .cardId{
@@ -284,6 +307,8 @@ body::-webkit-scrollbar-thumb {
 .cardId-content{
     float: right;
 }
+/* end */
+
 /* resposive desing */
 @media (max-width:1000px) {
   .navbar {
