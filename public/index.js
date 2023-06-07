@@ -2,7 +2,6 @@ const btnModel = document.querySelector('.btn-model');
 const closeModel = document.querySelector('.closeModalBtn');
 const model = document.querySelector('.create-model');
 const overlay = document.querySelector('.overlay');
-const searchInput = document.querySelector('.search-inp');
 
 // open model
 btnModel.addEventListener('click', () => {
@@ -18,9 +17,25 @@ const close = () => {
 
 closeModel.addEventListener('click', close)
 
+// close the model with press key escape
+window.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      close();
+    }
+  });
+
+//close the model outside
+overlay.addEventListener('click', close)
+
 function sendData(e) {
     const searchResults = document.getElementById('searchResults');
-    searchResults.classList.toggle('hidden');
+    const searchInput = document.getElementById('search-box').value;
+    if (typeof searchInput === 'string') {
+        searchResults.classList.remove('hidden');
+    }
+    if (searchInput == false) {
+        searchResults.classList.add('hidden');
+    }
     let match2 = e.value.match(/\s*/);
     if (match2[0] === e.value) {
         searchResults.innerHTML = '';
@@ -39,7 +54,11 @@ function sendData(e) {
             }
             payload.forEach((item, index) => {
                 if(index > 0) searchResults.innerHTML += '<hr>';
-                searchResults.innerHTML += `<p>${item.title}</p>`;
+                searchResults.innerHTML += `<form action="/api/v1/products/?title=${item.title}" method="get">
+                    <button class="title-btn" type="submit">
+                        <p>${item.title}</p>
+                    </button>
+                </form>`;
             });
             return;
         });

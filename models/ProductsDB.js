@@ -1,15 +1,5 @@
 const mongoose = require("mongoose");
-const { unique } = require("rjs");
-
-// Data Base section
-const DB = process.env.DATABASE_LOCAL;
-
-mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-  })
-  .then(() => console.log('DB connection successful!'));
-
+const slugify = require('slugify');
 
 // mongodb schema
 const productSchema = new mongoose.Schema({
@@ -41,9 +31,37 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: [true, 'A product must have a cover image']
     },
-    images: [String]
-});
+    images: [String],
+    admins: [
+        {
+          type: mongoose.Schema.ObjectId,
+          ref: 'User'
+        }
+      ]
+    },
+    {
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true }
+    }
+);
 // productSchema.plugin(uniqueValidator)
+
+productSchema.virtual('durationWeeks').get(function() {
+    return this.duration / 7;
+});
+  
+  // Virtual populate
+productSchema.virtual('reviews', {
+    ref: 'Review',
+    foreignField: 'product',
+    localField: '_id'
+});
+  
+  // DOCUMENT MIDDLEWARE: runs before .save() and .create()
+productSchema.pre('save', function(next) {
+    this.slug = slugify(this.title, { lower: true });
+    next();
+});
 
 // the mongoose modal
 const Product = mongoose.model('Product', productSchema);

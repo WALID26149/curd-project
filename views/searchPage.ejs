@@ -1,0 +1,27 @@
+<%- include('partials/header'); -%>
+<!-- navbar section -->
+<%- include('partials/navbar'); -%>
+<!-- all cards -->
+<div class="cards">
+    <!-- card -->
+
+    <% for(let i = 0; i < products.length; i++) { %>
+    <div class="card">
+      <img class="img-card" src=<%=  products[i].thumbnail %> alt="img" />
+            <div class="product-content">
+              <h1 class="h1-card"><%= products[i].title %></h1>
+              <p class="p-card"><%= products[i].description %></p>
+              <h3>discount percentage: <span>-<%= products[i].discountPercentage %>%</span></h3>
+              <div class="rating">
+                <p class="p-rating"><%= products[i].rating %></p>
+                <i class="lni lni-star-fill"></i>
+              </div>
+            </div>
+            <form class="form-view" action=<%= products[i]._id %> method="get">
+              <h3 class="h3-price"><%= products[i].price %>$</h3>
+              <button class="sub-btn" type="submit">View more</button>
+            </form>
+      </div>
+    <% } %>
+  </div>
+<%- include('partials/footer'); -%>

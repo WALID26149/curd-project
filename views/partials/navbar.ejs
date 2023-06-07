@@ -8,15 +8,15 @@
       <input type="checkbox" id="navbar-toggle">
       <label for="navbar-toggle" class="navbar-toggle-label"><i class="lni lni-menu"></i></label>
       <ul class="navbar-menu">
-        <input type="text" id="search-box" placeholder="search" onkeyup="sendData(this)">
+        <input type="text" id="search-box" name="search" value="" placeholder="search" onkeyup="sendData(this)">
         <section class="hidden" id="searchResults"></section>
         <li><a class="a-link" href="/">Home</a></li>
         <li><a class="a-link" href="/">Create</a></li>
         <li><a class="a-link" href="/">Cart</a></li>
-        <form action="/">
+        <form action="/api/v1/users/singup">
           <button class="nav-btn-login" type="button" name="button">LOGIN</button>
         </form>
-        <form action="/">
+        <form action="/api/v1/users/login">
           <button class="nav-btn-singup" type="button" name="button">SING UP</button>
         </form>
       </ul>
