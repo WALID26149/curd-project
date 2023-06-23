@@ -1,0 +1,15 @@
+<%- mixin('reviewCard', { review }, { async: true }) %>
+  <div class="reviews__card">
+    <div class="reviews__avatar">
+      <h6 class="reviews__user"><%= review.user.name %></h6>
+    </div>
+    <p class="reviews__text"><%= review.review %></p>
+    <div class="reviews__rating">
+      <% for(let star = 1; star <= 5; star++) { %>
+        <svg class="reviews__star <%= review.rating >= star ? 'reviews__star--active' : 'reviews__star--inactive' %>">
+          <use xlink:href="/img/icons.svg#icon-star"></use>
+        </svg>
+      <% } %>
+    </div>
+  </div>
+<%- endmixin() %>

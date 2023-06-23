@@ -1,6 +1,6 @@
 const express = require('express');
-const getProductData = require('../controllers/productData.js');
-const authUsersData = require('../controllers/authUsers.js');
+const getProductData = require('../controller/productData.js');
+const authUsersData = require('../controller/authUsers.js');
 const reviewRouter = require('./../router/reviewRout.js');
 // const reviewController = require('./../controllers/reviewController.js');
 
@@ -13,16 +13,7 @@ router.use('/:productId/reviews', reviewRouter);
 router
   .route('/')
    .get(getProductData.getAllProducts)
-   .post(getProductData.postProduct)
-  //  authUsersData.protect ,
-
-router
-  .route('/search')
-   .post(getProductData.postSearch)
-
-router
-  .route('/search/:key')
-   .get(getProductData.getSearch)
+   .post(authUsersData.protect ,authUsersData.restrictTo('admin'), getProductData.postProduct)
 
 router
   .route('/:id')

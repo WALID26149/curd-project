@@ -1,6 +1,7 @@
 const express = require('express');
-const authUsersData = require('../controllers/authUsers.js');
-const usersData = require('../controllers/usersData.js');
+const authUsersData = require('../controller/authUsers.js');
+const usersData = require('../controller/usersData.js');
+const { route } = require('./reviewRout.js');
 const router = express.Router();
 
 router.post('/signup', authUsersData.signup);
@@ -9,10 +10,16 @@ router.post('/login', authUsersData.login);
 router.post('/forgotPassword', authUsersData.forgotPassword);
 router.patch('/resetPassword/:token', authUsersData.resetPassword);
 
-router.patch('/updateMyPassword', authUsersData.protect, authUsersData.updatePassword);
+// Protect all routes after this middleware
+router.use(authUsersData.protect)
 
-router.patch('/updateMe', authUsersData.protect, usersData.updateMe);
-router.delete('/deleteMe', authUsersData.protect, usersData.deleteMe);
+router.patch('/updateMyPassword', authUsersData.updatePassword);
+
+router.get('/me', usersData.getMe, usersData.getUser);
+router.patch('/updateMe', usersData.updateMe);
+router.delete('/deleteMe', usersData.deleteMe);
+
+router.use(authUsersData.restrictTo('admin'))
 
 router
   .route('/')

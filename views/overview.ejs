@@ -15,6 +15,8 @@
           <form action="/" method="post">
               <label>title</label>
               <input type="text" name="title" placeholder="title" required>
+              <label>slug</label>
+              <input type="text" name="slug" placeholder="slug" required>
               <label>description</label>
               <textarea name="description" id="" cols="60" rows="3" placeholder="type your description" required></textarea>
               <label>price</label>
@@ -41,34 +43,32 @@
     <div class="cards">
       <!-- card -->
 
-      <% for(let i = 0; i < products.length; i++) { %>
+      <% products.forEach(product => { %>
       <div class="card">
         <div class="card-header">
           <div class="card-picture">
-            <img class="img-card" src=<%=  products[i].thumbnail %> alt="img" />
+            <img class="img-card" src=<%=  product.thumbnail %> alt="img" />
           </div>
         </div>
         <!-- card details -->
         <div class="card-details">
-            <h1 class="h1-card"><%= products[i].title %></h1>
-            <p class="p-card"><%= products[i].description %></p>
+            <h1 class="h1-card"><%= product.title %></h1>
+            <p class="p-card"><%= product.description %></p>
             <div class="card-data">
-              <h3>discount percentage: <span>-<%= products[i].discountPercentage %>%</span></h3>
+              <h3>discount percentage: <span>-<%= product.discountPercentage %>%</span></h3>
             </div>
         </div>
         <!-- card footer -->
         <div class="card-footer">
           <p class="p-rating">
-            <span><%= products[i].rating %></span>
+            <span><%= product.rating %></span>
             <span>rating</span>
           </p>
-          <h3 class="h3-price"><%= products[i].price %>$</h3>
-          <!-- <form class="form-view" action=<%= products[i]._id %> method="get"> -->
-            <button class="sub-btn" type="submit">View more</button>
-          <!-- </form> -->
+          <h3 class="h3-price">$<%= product.price %></h3>
+          <a class="sub-btn" type="submit" href="/product/<%= product.slug %>">View more</a>
         </div>
         </div>
-      <% } %>
+      <% }) %>
     </div>
   </main>
 </div>

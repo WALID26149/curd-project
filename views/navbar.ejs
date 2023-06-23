@@ -1,5 +1,5 @@
 <header>
-    <!-- navbar  -->
+    <!-- navbar -->
     <nav class="navbar">
       <div class="navbar-brand">
         <i class="lni lni-pointer-top"></i>
@@ -8,17 +8,13 @@
       <input type="checkbox" id="navbar-toggle">
       <label for="navbar-toggle" class="navbar-toggle-label"><i class="lni lni-menu"></i></label>
       <ul class="navbar-menu">
-        <input type="text" id="search-box" name="search" value="" placeholder="search" onkeyup="sendData(this)">
+        <input type="text" id="search-box" name="search" value="" placeholder="search">
         <section class="hidden" id="searchResults"></section>
         <li><a class="a-link" href="/">Home</a></li>
         <li><a class="a-link" href="/">Create</a></li>
-        <li><a class="a-link" href="/">Cart</a></li>
-        <form action="/api/v1/users/singup">
-          <button class="nav-btn-login" type="button" name="button">LOGIN</button>
-        </form>
-        <form action="/api/v1/users/login">
-          <button class="nav-btn-singup" type="button" name="button">SING UP</button>
-        </form>
+        <li><a class="a-link" href="/"><i class="lni lni-shopping-basket"></i></a></li>
+          <a class="nav-btn-login" name="a-login" href="/login">LOGIN</a>
+          <a class="nav-btn-singup" name="a-signup" href="#">SING UP</a>
       </ul>
     </nav>
   </header>

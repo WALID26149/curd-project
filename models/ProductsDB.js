@@ -9,6 +9,10 @@ const productSchema = new mongoose.Schema({
         maxlength: [40, 'A product name must have less or equal then 40 characters'],
         minlength: [5, 'A product name must have more or equal then 5 characters']
     },
+    slug: {
+      type: String,
+      required: [true, 'A product must have a slug']
+    },
     description: {
         type: String,
         trim: true,
@@ -22,7 +26,12 @@ const productSchema = new mongoose.Schema({
         type: Number,
         default: 4.5,
         min: [1, 'Rating must be above 1.0'],
-        max: [5, 'Rating must be below 5.0']
+        max: [5, 'Rating must be below 5.0'],
+        set: val => Math.round(val * 10) / 10
+    },
+    ratingsQuantity: {
+        type: Number,
+        default: 0
     },
     stock: Number,
     brand: String,
@@ -45,6 +54,10 @@ const productSchema = new mongoose.Schema({
     }
 );
 // productSchema.plugin(uniqueValidator)
+
+productSchema.index({ price: 1, rating: -1 });
+productSchema.index({ slug: 1 });
+// tourSchema.index({ startLocation: '2dsphere' });
 
 productSchema.virtual('durationWeeks').get(function() {
     return this.duration / 7;

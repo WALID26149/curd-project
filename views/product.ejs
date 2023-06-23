@@ -1,0 +1,59 @@
+<%- include('base') %>
+<%- include('reviewCard', { review: review }) %>
+
+
+
+<%- mixin('overviewBox', { label, text, icon }, { async: true }) %>
+  <div class="overview-box__detail">
+    <svg class="overview-box__icon">
+      <use xlink:href="/img/icons.svg#icon-<%= icon %>"></use>
+    </svg>
+    <span class="overview-box__label"><%= label %></span>
+    <span class="overview-box__text"><%= text %></span>
+  </div>
+<%- endmixin() %>
+
+<%- block('overview') %>
+  <section class="section-header">
+    <div class="header__hero">
+      <div class="header__hero-overlay">&nbsp;</div>
+      <img class="header__hero-img" src="<%= product.thumbnail %>" alt="<%= product.title %>">
+    </div>
+
+    <div class="heading-box">
+      <h1 class="heading-primary">
+        <span><%=product.title %> product</span>
+      </h1>
+      <div class="heading-box__group">
+        <div class="heading-box__detail">
+          <svg class="heading-box__icon">
+            <use xlink:href="/img/icons.svg#icon-clock"></use>
+          </svg>
+          <span class="heading-box__text"><%= product.price %></span>
+        </div>
+        <div class="heading-box__detail">
+          <svg class="heading-box__icon">
+            <use xlink:href="/img/icons.svg#icon-map-pin"></use>
+          </svg>
+          <span class="heading-box__text"><%= product.description %></span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section-pictures">
+    <% product.images.forEach(function(img, i) { %>
+      <div class="picture-box">
+        <img class="picture-box__img" src="<%= img %>" alt="The Park Camper Tour <%= i + 1 %>" class="picture-box__img--<%= i + 1 %>">
+      </div>
+    <% }); %>
+  </section>
+  
+  
+  <section class="section-reviews">
+    <div class="reviews">
+      <% product.reviews.forEach(function(review) { %>
+        <% reviewCard(review) %>
+      <% }); %>
+    </div>
+  </section>

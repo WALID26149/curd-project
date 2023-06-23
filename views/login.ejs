@@ -1,0 +1,21 @@
+<%- include('partials/header'); -%>
+<%- include('navbar'); -%>
+<div class="login-card">
+    <div class="heading-login-form">
+        <h2 class="h2-login">LOG INTO YOUR ACCOUNT</h2>
+    </div>
+    <form class="form">
+        <div class="input-form">
+            <label class="form__label" for="email">Email address</label>
+            <input id="email" class="login-email" type="email" placeholder="you@example.com" required>
+          </div>
+          <div class="input-form">
+            <label class="form__label" for="password">Password</label>
+            <input id="password" class="login-password" type="password" placeholder="••••••••" required minlength="8">
+          </div>
+          <div class="login-form-btn">
+            <button class="login-btn" type="submit">Login</button>
+          </div>
+    </form>
+</div>
+<%- include('partials/footer'); -%>
