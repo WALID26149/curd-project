@@ -53,19 +53,6 @@ exports.getOne = (Model, popOptions) => catchAsync(async (req, res, next) => {
       return next(new AppError('No document found with that ID', 404));
     }
 
-    // res.render('product',
-    //  {
-    //   productTitle: doc.title,
-    //   description: doc.description,
-    //   price: doc.price,
-    //   rating: doc.rating,
-    //   thumbnail: doc.thumbnail,
-    //   images: doc.images[0],
-    //   images2: doc.images[1],
-    //   images3: doc.images[2],
-    //   images4: doc.images[3],
-    //   discountPercentage: doc.discountPercentage
-    // })
     res.status(200).json({
       status: 'success',
       data: {

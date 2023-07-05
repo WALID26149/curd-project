@@ -1,11 +1,11 @@
 const express = require('express');
 const authUsersData = require('../controller/authUsers.js');
 const usersData = require('../controller/usersData.js');
-const { route } = require('./reviewRout.js');
 const router = express.Router();
 
 router.post('/signup', authUsersData.signup);
 router.post('/login', authUsersData.login);
+router.get('/logout', authUsersData.logout);
 
 router.post('/forgotPassword', authUsersData.forgotPassword);
 router.patch('/resetPassword/:token', authUsersData.resetPassword);

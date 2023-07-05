@@ -1,0 +1,62 @@
+<%- include('partials/header'); -%>
+<%- include('navbar'); -%>
+<% if (user.role === 'admin') { %>
+    <div class="admin-nav">
+      <h5 class="admin-nav-heading">Admin</h5>
+      <ul class="side-nav">
+        <% navItem('#', 'Manage products', 'map') %>
+        <% navItem('#', 'Manage users', 'users') %>
+        <% navItem('#', 'Manage reviews', 'star') %>
+        <% navItem('#', 'Manage bookings', 'briefcase') %>
+      </ul>
+    </div>
+  <% } %>
+</nav>
+
+<div class="user-view-content">
+  <div class="user-view-form-container">
+    <h2 class="heading-secondary ma-bt-md">Your account settings</h2>
+    
+    <!-- WITHOUT API -->
+    <!-- <form class="form form-user-data" action="/submit-user-data" method="POST"> -->
+    
+    <!-- WITH API -->
+    <form class="form form-user-data">
+      <div class="form-group">
+        <label class="form-label" for="name">Name</label>
+        <input id="name" class="form-input" type="text" value="<%= user.name %>" required name="name">
+      </div>
+      <div class="form-group ma-bt-md">
+        <label class="form-label" for="email">Email address</label>
+        <input id="email" class="form-input" type="email" value="<%= user.email %>" required name="email">
+      </div>
+      <div class="form-group right">
+        <button class="btn btn--small btn--green" type="submit">Save settings</button>
+      </div>
+    </form>
+  </div>
+
+  
+  <div class="user-view-form-container">
+    <h2 class="heading-secondary-2 ma-bt-md">Password change</h2>
+    <form class="form form-user-password">
+      <div class="form-group">
+        <label class="form-label" for="password-current">Current password</label>
+        <input id="password-current" class="form-input" type="password" placeholder="••••••••" required minlength="8">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="password">New password</label>
+        <input id="password" class="form-input" type="password" placeholder="••••••••" required minlength="8">
+      </div>
+      <div class="form-group ma-bt-lg">
+        <label class="form-label" for="password-confirm">Confirm password</label>
+        <input id="password-confirm" class="form-input" type="password" placeholder="••••••••" required minlength="8">
+      </div>
+      <div class="form-group right">
+        <button class="btn btn--small btn--green btn--save-password" type="submit">Save password</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+<%- include('partials/footer'); -%>

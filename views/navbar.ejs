@@ -8,13 +8,29 @@
       <input type="checkbox" id="navbar-toggle">
       <label for="navbar-toggle" class="navbar-toggle-label"><i class="lni lni-menu"></i></label>
       <ul class="navbar-menu">
-        <input type="text" id="search-box" name="search" value="" placeholder="search">
+        <!-- <input type="text" id="search-box" name="search" value="" placeholder="search"> -->
+        <div class="search">
+        <input id="search-box" type="text" name="search" placeholder="Search">
+            <button class="searchButton" href="#">
+              <i class="lni lni-search-alt"></i>
+            </button>
+          </div>
         <section class="hidden" id="searchResults"></section>
         <li><a class="a-link" href="/">Home</a></li>
         <li><a class="a-link" href="/">Create</a></li>
         <li><a class="a-link" href="/"><i class="lni lni-shopping-basket"></i></a></li>
+        <% if (typeof user !== 'undefined') { %>
+          <a class="nav-btn-logout">Log out</a>
+          <div class="my-account">
+            <i class="lni lni-enter"></i>
+            <a class="nav-btn-me" href="/me">
+              <span><%= user.name.split(' ')[0] %></span>
+            </a>
+          </div>
+        <% } else { %>
           <a class="nav-btn-login" name="a-login" href="/login">LOGIN</a>
           <a class="nav-btn-singup" name="a-signup" href="#">SING UP</a>
+        <% } %>
       </ul>
     </nav>
   </header>

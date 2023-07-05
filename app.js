@@ -48,7 +48,8 @@ app.use(
       "img-src": ["'self'", "https: data:"]
     }
   })
-)
+);
+
 // Limit requests from same API
 const limiter = rateLimit({
   max: 100,
@@ -59,6 +60,7 @@ app.use('/api', limiter);
 
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
+app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParser());
 
 // Data sanitization against NoSQL query injection
@@ -78,6 +80,12 @@ app.use(
     ]
   })
 );
+
+// Content-Security-Policy MIDDLEWARES
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', "script-src 'self' https://cdnjs.cloudflare.com");
+  next();
+});
 
 
 // DataBase section

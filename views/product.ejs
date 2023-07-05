@@ -1,59 +1,89 @@
-<%- include('base') %>
-<%- include('reviewCard', { review: review }) %>
+<%- include('partials/header') %>
+<!-- navbar section -->
+<%- include('navbar'); -%>
+      <div class="cardId">
+        <div class="cardId-img">
+            <div class="operations__tab-container">
+              <button
+                class="btn operations__tab operations__tab--1 operations__tab--active"
+                data-tab="1">
+                <span><img class="img-tab" src=<%= product.thumbnail %> alt="img"></span>
+              </button>
+              <button class="btn operations__tab operations__tab--2" data-tab="2">
+                <span><img class="img-tab" src=<%= product.images[0] %> alt="img"></span>
+              </button>
+              <button class="btn operations__tab operations__tab--3" data-tab="3">
+                <span><img class="img-tab" src=<%= product.images[1] %> alt="img"></span>
+              </button>
+              <button class="btn operations__tab operations__tab--4" data-tab="4">
+                <span><img class="img-tab" src=<%= product.images[2] %> alt="img"></span>
+              </button>
+              <button class="btn operations__tab operations__tab--5" data-tab="5">
+                <span><img class="img-tab" src=<%= product.images[3] %> alt="img"></span>
+              </button>
+            </div>
+
+            <div class="operations">
+              <div class="operations__content operations__content--1 operations__content--active">
+                <article class="operations-article">
+                  <img class="img-tab" src=<%= product.thumbnail %> alt="img">
+                </article>
+              </div>
+       
+       
+              <!-- /// -->
+              <div class="operations__content operations__content--2">
+                <article class="operations-article">
+                  <img class="img-tab" src=<%= product.images[0] %> alt="img">
+                </article>
+              </div>
+       
+       
+              <!-- /// -->
+              <div class="operations__content operations__content--3">
+                <article class="operations-article">
+                  <img class="img-tab" src=<%= product.images[1] %> alt="img">
+                </article>
+              </div>
+       
+
+              <!-- /// -->
+              <div class="operations__content operations__content--4">
+                <article class="operations-article">
+                  <img class="img-tab" src=<%= product.images[2] %> alt="img">
+                </article>
+              </div>
 
 
-
-<%- mixin('overviewBox', { label, text, icon }, { async: true }) %>
-  <div class="overview-box__detail">
-    <svg class="overview-box__icon">
-      <use xlink:href="/img/icons.svg#icon-<%= icon %>"></use>
-    </svg>
-    <span class="overview-box__label"><%= label %></span>
-    <span class="overview-box__text"><%= text %></span>
-  </div>
-<%- endmixin() %>
-
-<%- block('overview') %>
-  <section class="section-header">
-    <div class="header__hero">
-      <div class="header__hero-overlay">&nbsp;</div>
-      <img class="header__hero-img" src="<%= product.thumbnail %>" alt="<%= product.title %>">
-    </div>
-
-    <div class="heading-box">
-      <h1 class="heading-primary">
-        <span><%=product.title %> product</span>
-      </h1>
-      <div class="heading-box__group">
-        <div class="heading-box__detail">
-          <svg class="heading-box__icon">
-            <use xlink:href="/img/icons.svg#icon-clock"></use>
-          </svg>
-          <span class="heading-box__text"><%= product.price %></span>
+              <!-- /// -->
+              <div class="operations__content operations__content--5">
+                <article class="operations-article">
+                  <img class="img-tab" src=<%= product.images[3] %> alt="img">
+                </article>
+              </div>
+            </div>
         </div>
-        <div class="heading-box__detail">
-          <svg class="heading-box__icon">
-            <use xlink:href="/img/icons.svg#icon-map-pin"></use>
-          </svg>
-          <span class="heading-box__text"><%= product.description %></span>
+        <div class="cardId-content">
+            <h1><%= product.title %></h1>
+            <p><%= product.description %></p>
+            <h3><%= product.price %>$</h3>
+            <h3>discount percentage: <span>-<%= product.discountPercentage %>%</span></h3>
+            <div class="ratingId">
+                <p class="p-ratingId"><%= product.rating %></p>
+                <i class="lni lni-star-fill"></i>
+            </div>
+            <form action="/">
+                <button class="cardId-btn" type="submit">BUY</button>
+            </form>
         </div>
-      </div>
     </div>
-  </section>
   
-  <section class="section-pictures">
-    <% product.images.forEach(function(img, i) { %>
-      <div class="picture-box">
-        <img class="picture-box__img" src="<%= img %>" alt="The Park Camper Tour <%= i + 1 %>" class="picture-box__img--<%= i + 1 %>">
-      </div>
-    <% }); %>
-  </section>
-  
-  
+  <%- include('reviewCard', { review: { user: { name: 'John', photo: 'john.jpg' }, review: 'Great experience', rating: 4 } }) %>
   <section class="section-reviews">
     <div class="reviews">
-      <% product.reviews.forEach(function(review) { %>
-        <% reviewCard(review) %>
-      <% }); %>
+      <% product.reviews.forEach(review => { %>
+        <% include('reviewCard', { review: review }) %>
+      <% }) %>
     </div>
   </section>
+  <%- include('partials/footer') %>
