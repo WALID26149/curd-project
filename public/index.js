@@ -111,7 +111,7 @@ copyright.innerHTML = `Walid allan copy-right &copy ${getDate}`;
 
 
 // searchInput.addEventListener("keyup", sendData)
-searchInput.addEventListener('keyup' , sendData = e => {
+searchInput.addEventListener('keyup' , e => {
     const searchResults = document.getElementById('searchResults');
     const searchInput = document.getElementById('search-box').value;
     
@@ -125,8 +125,8 @@ searchInput.addEventListener('keyup' , sendData = e => {
     if (match[0] === e.value) {
         searchResults.innerHTML = '';
         return;
-    }     
-    fetch('/search', {
+    } 
+    fetch('/', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({payload: e.value})
@@ -148,7 +148,4 @@ searchInput.addEventListener('keyup' , sendData = e => {
             return;
         });
     searchResults.innerHTML = ' ';
-});
-
-
-
+})

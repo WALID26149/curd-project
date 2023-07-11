@@ -1,12 +1,15 @@
 <div class="mg-container">
-  <div class="title-heading">
-    <h1 class="h1-title">Take your product</h1>
-    <p class="p-title">All products available now</p>
-  </div>
+    <div class="title-heading">
+      <h1 class="h1-title">Take your product</h1>
+      <p class="p-title">All products available now</p>
+    </div>
+
   <!-- open model btn -->
+  <% if (typeof user !== 'undefined') { %>
     <div class="btn-m">
       <button class="btn-model"><i class="lni lni-plus"></i></button>
     </div>
+  <% } %>
   <!-- open and close model -->
     <div class="create-model hidden">
       <form method="post">

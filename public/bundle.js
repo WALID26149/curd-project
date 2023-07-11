@@ -12364,7 +12364,7 @@ var getDate = new Date().getFullYear();
 copyright.innerHTML = "Walid allan copy-right &copy ".concat(getDate);
 
 // searchInput.addEventListener("keyup", sendData)
-searchInput.addEventListener('keyup', sendData = function sendData(e) {
+searchInput.addEventListener('keyup', function (e) {
   var searchResults = document.getElementById('searchResults');
   var searchInput = document.getElementById('search-box').value;
   if (typeof searchInput === 'string') {
@@ -12378,7 +12378,7 @@ searchInput.addEventListener('keyup', sendData = function sendData(e) {
     searchResults.innerHTML = '';
     return;
   }
-  fetch('/search', {
+  fetch('/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

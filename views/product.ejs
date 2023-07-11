@@ -26,7 +26,7 @@
             <div class="operations">
               <div class="operations__content operations__content--1 operations__content--active">
                 <article class="operations-article">
-                  <img class="img-tab" src=<%= product.thumbnail %> alt="img">
+                  <img class="img-tab-ac" src=<%= product.thumbnail %> alt="img">
                 </article>
               </div>
        
@@ -34,7 +34,7 @@
               <!-- /// -->
               <div class="operations__content operations__content--2">
                 <article class="operations-article">
-                  <img class="img-tab" src=<%= product.images[0] %> alt="img">
+                  <img class="img-tab-ac" src=<%= product.images[0] %> alt="img">
                 </article>
               </div>
        
@@ -42,7 +42,7 @@
               <!-- /// -->
               <div class="operations__content operations__content--3">
                 <article class="operations-article">
-                  <img class="img-tab" src=<%= product.images[1] %> alt="img">
+                  <img class="img-tab-ac" src=<%= product.images[1] %> alt="img">
                 </article>
               </div>
        
@@ -50,7 +50,7 @@
               <!-- /// -->
               <div class="operations__content operations__content--4">
                 <article class="operations-article">
-                  <img class="img-tab" src=<%= product.images[2] %> alt="img">
+                  <img class="img-tab-ac" src=<%= product.images[2] %> alt="img">
                 </article>
               </div>
 
@@ -58,7 +58,7 @@
               <!-- /// -->
               <div class="operations__content operations__content--5">
                 <article class="operations-article">
-                  <img class="img-tab" src=<%= product.images[3] %> alt="img">
+                  <img class="img-tab-ac" src=<%= product.images[3] %> alt="img">
                 </article>
               </div>
             </div>
@@ -66,19 +66,18 @@
         <div class="cardId-content">
             <h1><%= product.title %></h1>
             <p><%= product.description %></p>
-            <h3><%= product.price %>$</h3>
-            <h3>discount percentage: <span>-<%= product.discountPercentage %>%</span></h3>
             <div class="ratingId">
-                <p class="p-ratingId"><%= product.rating %></p>
-                <i class="lni lni-star-fill"></i>
+              <h3>discount percentage: <span>-<%= product.discountPercentage %>%</span></h3>
+              <p class="p-ratingId"><%= product.rating %> rating</p>
             </div>
-            <form action="/">
-                <button class="cardId-btn" type="submit">BUY</button>
-            </form>
+            <div class="buy-btn">
+              <h3>$<%= product.price %></h3>
+              <button class="cardId-btn" type="submit">BUY</button>
+            </div>
         </div>
     </div>
-  
-  <%- include('reviewCard', { review: { user: { name: 'John', photo: 'john.jpg' }, review: 'Great experience', rating: 4 } }) %>
+    
+<!--  <%- include('reviewCard', { review: { user: { name: 'John', photo: 'john.jpg' }, review: 'Great experience', rating: 4 } }) %> -->
   <section class="section-reviews">
     <div class="reviews">
       <% product.reviews.forEach(review => { %>
