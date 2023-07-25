@@ -2,6 +2,7 @@
 import '@babel/polyfill';
 import {login, logout} from './login.js';
 import { updateSettings } from './updateSettings.js';
+import { buyProduct } from './stripe.js';
 
 // DOM document
 const btnModel = document.querySelector('.btn-model');
@@ -18,6 +19,7 @@ const loginForm = document.querySelector('.form-login');
 const logOutBtn = document.querySelector('.nav-btn-logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
+const buyBtn = document.getElementById('buy-product');
 
 // authentication fn
 if (loginForm) { 
@@ -58,6 +60,12 @@ if (userPasswordForm)
     document.getElementById('password-confirm').value = '';
 });
 
+if (buyBtn)
+buyBtn.addEventListener('click', e => {
+    e.target.textContent = 'Processing...';
+    const { productId } = e.target.dataset;
+    buyProduct(productId);
+  });
 
 // switch between tabs
 document.addEventListener('DOMContentLoaded', function() {

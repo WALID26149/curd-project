@@ -460,6 +460,21 @@ textarea:focus, input:focus{
   width: 150px;
   cursor: pointer;
 }
+.cardId-btn-a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  border: 0.5px solid #212A3E;
+  border-radius: 22px;
+  padding: 12px 25px;
+  margin-left: 15px;
+  color: #fff;
+  background-color: #212A3E;
+  font-size: 18px;
+  transition: all 0.4s;
+  width: fit-content;
+  cursor: pointer;
+}
 .cardId-btn:hover{
   color: #000;
   background-color: inherit;

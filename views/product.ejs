@@ -72,11 +72,15 @@
             </div>
             <div class="buy-btn">
               <h3>$<%= product.price %></h3>
-              <button class="cardId-btn" type="submit">BUY</button>
+              <% if (typeof user !== 'undefined') { %>
+                <button class="cardId-btn" id="buy-product" data-product-id="<%= product.id %>" type="submit">BUY</button>
+              <% } else { %>
+                <a class="cardId-btn-a" name="a-login" href="/login">LOGIN TO BUY THE PRODUCT</a>
+              <% } %>
             </div>
         </div>
     </div>
-    
+
 <!--  <%- include('reviewCard', { review: { user: { name: 'John', photo: 'john.jpg' }, review: 'Great experience', rating: 4 } }) %> -->
   <section class="section-reviews">
     <div class="reviews">

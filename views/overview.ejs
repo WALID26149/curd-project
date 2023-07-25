@@ -1,77 +1,77 @@
 <div class="mg-container">
-    <div class="title-heading">
-      <h1 class="h1-title">Take your product</h1>
-      <p class="p-title">All products available now</p>
-    </div>
+  <div class="title-heading">
+    <h1 class="h1-title">Take your product</h1>
+    <p class="p-title">All products available now</p>
+  </div>
 
-  <!-- open model btn -->
-  <% if (typeof user !== 'undefined') { %>
-    <div class="btn-m">
-      <button class="btn-model"><i class="lni lni-plus"></i></button>
+<!-- open model btn -->
+<% if (typeof user !== 'undefined') { %>
+  <div class="btn-m">
+    <button class="btn-model"><i class="lni lni-plus"></i></button>
+  </div>
+<% } %>
+<!-- open and close model -->
+  <div class="create-model hidden">
+    <form method="post">
+      <button class="closeModalBtn" type="submit" name="button">&times;</button>
+      <div class="card-create">
+        <form action="/" method="post">
+            <label>title</label>
+            <input type="text" name="title" placeholder="title" required>
+            <label>slug</label>
+            <input type="text" name="slug" placeholder="slug" required>
+            <label>description</label>
+            <textarea name="description" id="" cols="60" rows="3" placeholder="type your description" required></textarea>
+            <label>price</label>
+            <input type="text" name="price" placeholder="price">
+            <label>discountPercentage</label>
+            <input type="text" name="discountPercentage" placeholder="discountPercentage" required>
+            <label>rating</label>
+            <input type="text" name="rating" placeholder="rating" required>
+            <label>stock</label>
+            <input type="text" name="stock" placeholder="stock" required>
+            <label>brand</label>
+            <input type="text" name="brand" placeholder="brand" required>
+            <label>category</label>
+            <input type="text" name="category" placeholder="category" required>
+            <label>thumbnail</label>
+            <input type="text" name="thumbnail" placeholder="thumbnail" required>
+            <button type="submit">Crate Product</button>
+        </form>
     </div>
-  <% } %>
-  <!-- open and close model -->
-    <div class="create-model hidden">
-      <form method="post">
-        <button class="closeModalBtn" type="submit" name="button">&times;</button>
-        <div class="card-create">
-          <form action="/" method="post">
-              <label>title</label>
-              <input type="text" name="title" placeholder="title" required>
-              <label>slug</label>
-              <input type="text" name="slug" placeholder="slug" required>
-              <label>description</label>
-              <textarea name="description" id="" cols="60" rows="3" placeholder="type your description" required></textarea>
-              <label>price</label>
-              <input type="text" name="price" placeholder="price">
-              <label>discountPercentage</label>
-              <input type="text" name="discountPercentage" placeholder="discountPercentage" required>
-              <label>rating</label>
-              <input type="text" name="rating" placeholder="rating" required>
-              <label>stock</label>
-              <input type="text" name="stock" placeholder="stock" required>
-              <label>brand</label>
-              <input type="text" name="brand" placeholder="brand" required>
-              <label>category</label>
-              <input type="text" name="category" placeholder="category" required>
-              <label>thumbnail</label>
-              <input type="text" name="thumbnail" placeholder="thumbnail" required>
-              <button type="submit">Crate Product</button>
-          </form>
+  </div>
+  <div class="overlay hidden"></div>
+<main class="main">
+  <!-- all cards -->
+  <div class="cards">
+    <!-- card -->
+
+    <% products.forEach(product => { %>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-picture">
+          <img class="img-card" src=<%=  product.thumbnail %> alt="img" />
+        </div>
       </div>
-    </div>
-    <div class="overlay hidden"></div>
-  <main class="main">
-    <!-- all cards -->
-    <div class="cards">
-      <!-- card -->
-
-      <% products.forEach(product => { %>
-      <div class="card">
-        <div class="card-header">
-          <div class="card-picture">
-            <img class="img-card" src=<%=  product.thumbnail %> alt="img" />
+      <!-- card details -->
+      <div class="card-details">
+          <h1 class="h1-card"><%= product.title %></h1>
+          <p class="p-card"><%= product.description %></p>
+          <div class="card-data">
+            <h3>discount percentage: <span>-<%= product.discountPercentage %>%</span></h3>
           </div>
-        </div>
-        <!-- card details -->
-        <div class="card-details">
-            <h1 class="h1-card"><%= product.title %></h1>
-            <p class="p-card"><%= product.description %></p>
-            <div class="card-data">
-              <h3>discount percentage: <span>-<%= product.discountPercentage %>%</span></h3>
-            </div>
-        </div>
-        <!-- card footer -->
-        <div class="card-footer">
-          <p class="p-rating">
-            <span><%= product.rating %></span>
-            <span>rating</span>
-          </p>
-          <h3 class="h3-price">$<%= product.price %></h3>
-          <a class="sub-btn" type="submit" href="/product/<%= product.slug %>">View more</a>
-        </div>
-        </div>
-      <% }) %>
-    </div>
-  </main>
+      </div>
+      <!-- card footer -->
+      <div class="card-footer">
+        <p class="p-rating">
+          <span><%= product.rating %></span>
+          <span>rating</span>
+        </p>
+        <h3 class="h3-price">$<%= product.price %></h3>
+        <a class="sub-btn" type="submit" href="/product/<%= product.slug %>">View more</a>
+      </div>
+      </div>
+    <% }) %>
+  </div>
+</main>
 </div>

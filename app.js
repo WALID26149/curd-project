@@ -19,6 +19,7 @@ const userProductRouter = require('./router/productRout.js');
 const userRouter = require('./router/userRout.js');
 const reviewRouter = require('./router/reviewRout.js');
 const searchRouter = require('./router/searchRout.js');
+const bookingRouter = require('./router/bookingRout.js');
 const viewRouter = require('./router/viewRout.js');
 
 const app = express();
@@ -34,6 +35,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Set security HTTP headers
+// app.use(helmet({ contentSecurityPolicy: false }) );
 app.use(helmet());
 
 // Development logging
@@ -87,6 +89,14 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://js.stripe.com;"
+  );
+  next();
+});
+
 
 // DataBase section
 const DB = process.env.DATABASE_LOCAL;
@@ -104,6 +114,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/products', userProductRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/bookings', bookingRouter);
 app.use('/', searchRouter);
 
 app.all('*', (req, res, next) => {
